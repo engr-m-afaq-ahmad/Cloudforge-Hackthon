@@ -1,0 +1,342 @@
+@import "tailwindcss";
+
+:root {
+  --cf-blue: #2103D6;
+  --cf-bg: #F1F1F2;
+  --cf-gray: #D9D9D9;
+  --cf-dark: #111111;
+  --cf-white: #FFFFFF;
+  --cf-title-bar: #000080;
+  --cf-title-bar-light: #1084d0;
+  --cf-window-bg: #c0c0c0;
+  --cf-window-border-light: #ffffff;
+  --cf-window-border-dark: #808080;
+  --cf-window-border-darker: #404040;
+  --cf-inset-light: #808080;
+  --cf-inset-dark: #ffffff;
+  --cf-desktop: #008080;
+}
+
+@theme inline {
+  --color-cf-blue: var(--cf-blue);
+  --color-cf-bg: var(--cf-bg);
+  --color-cf-gray: var(--cf-gray);
+  --color-cf-dark: var(--cf-dark);
+  --color-cf-white: var(--cf-white);
+  --color-cf-title-bar: var(--cf-title-bar);
+  --color-cf-title-bar-light: var(--cf-title-bar-light);
+  --color-cf-window-bg: var(--cf-window-bg);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-blanka: var(--font-blanka);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--cf-bg);
+  color: var(--cf-dark);
+  font-family: var(--font-mono), "Courier New", monospace;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M0 0 L12 8 L5 8 L7 14 L4 14 L2 8 L0 8 Z' fill='%23000' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E") 0 0, auto;
+}
+
+::selection {
+  background: var(--cf-blue);
+  color: var(--cf-white);
+}
+
+/* ═══════════════════════════════════════════
+   RETRO WINDOW SYSTEM
+   ═══════════════════════════════════════════ */
+
+.retro-window {
+  background: var(--cf-window-bg);
+  border: 2px solid;
+  border-color: var(--cf-window-border-light) var(--cf-window-border-darker) var(--cf-window-border-darker) var(--cf-window-border-light);
+  box-shadow: inset 1px 1px 0 var(--cf-white), inset -1px -1px 0 var(--cf-inset-light);
+}
+
+.retro-title-bar {
+  background: linear-gradient(90deg, var(--cf-title-bar), var(--cf-title-bar-light));
+  padding: 2px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.retro-title-bar-inactive {
+  background: linear-gradient(90deg, #808080, #b0b0b0);
+}
+
+.retro-title-btn {
+  width: 16px;
+  height: 14px;
+  background: var(--cf-window-bg);
+  border: 1px solid;
+  border-color: var(--cf-window-border-light) var(--cf-window-border-darker) var(--cf-window-border-darker) var(--cf-window-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Marlett", sans-serif;
+}
+
+.retro-title-btn:active {
+  border-color: var(--cf-window-border-darker) var(--cf-window-border-light) var(--cf-window-border-light) var(--cf-window-border-darker);
+}
+
+.retro-inset {
+  border: 2px solid;
+  border-color: var(--cf-inset-light) var(--cf-inset-dark) var(--cf-inset-dark) var(--cf-inset-light);
+}
+
+.retro-outset {
+  border: 2px solid;
+  border-color: var(--cf-window-border-light) var(--cf-window-border-darker) var(--cf-window-border-darker) var(--cf-window-border-light);
+  box-shadow: inset 1px 1px 0 var(--cf-white), inset -1px -1px 0 var(--cf-inset-light);
+}
+
+.retro-btn {
+  background: var(--cf-window-bg);
+  border: 2px solid;
+  border-color: var(--cf-window-border-light) var(--cf-window-border-darker) var(--cf-window-border-darker) var(--cf-window-border-light);
+  box-shadow: inset 1px 1px 0 var(--cf-white), inset -1px -1px 0 var(--cf-inset-light);
+  padding: 3px 12px;
+  font-family: var(--font-mono), "Courier New", monospace;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--cf-dark);
+}
+
+.retro-btn:active {
+  border-color: var(--cf-window-border-darker) var(--cf-window-border-light) var(--cf-window-border-light) var(--cf-window-border-darker);
+  box-shadow: inset -1px -1px 0 var(--cf-white), inset 1px 1px 0 var(--cf-inset-light);
+  padding: 4px 11px 2px 13px;
+}
+
+.retro-btn:focus-visible {
+  outline: 1px dotted var(--cf-dark);
+  outline-offset: -4px;
+}
+
+.retro-btn-primary {
+  background: var(--cf-title-bar);
+  color: var(--cf-white);
+  font-weight: bold;
+}
+
+/* ═══════════════════════════════════════════
+   LOADING / PROGRESS BARS
+   ═══════════════════════════════════════════ */
+
+.retro-progress {
+  height: 16px;
+  background: var(--cf-white);
+  border: 2px solid;
+  border-color: var(--cf-inset-light) var(--cf-inset-dark) var(--cf-inset-dark) var(--cf-inset-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-progress-fill {
+  height: 100%;
+  background: var(--cf-title-bar);
+  transition: width 0.3s steps(20);
+}
+
+.retro-progress-blocks {
+  height: 100%;
+  display: flex;
+  gap: 2px;
+}
+
+.retro-progress-block {
+  width: 10px;
+  height: 100%;
+  background: var(--cf-title-bar);
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════ */
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes boot-text {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes pixel-cursor-blink {
+  0%, 49% { border-right-color: var(--cf-dark); }
+  50%, 100% { border-right-color: transparent; }
+}
+
+@keyframes slide-in-window {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fade-in-retro {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popup-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-boot-text {
+  animation: boot-text 0.05s step-end both;
+}
+
+.animate-slide-in {
+  animation: slide-in-window 0.2s step-end both;
+}
+
+.animate-fade-in {
+  animation: fade-in-retro 0.15s step-end both;
+}
+
+.animate-popup {
+  animation: popup-appear 0.15s step-end both;
+}
+
+/* Staggered delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+.delay-1200 { animation-delay: 1200ms; }
+.delay-1500 { animation-delay: 1500ms; }
+.delay-2000 { animation-delay: 2000ms; }
+
+/* ═══════════════════════════════════════════
+   CRT / SCANLINE TEXTURE
+   ═══════════════════════════════════════════ */
+
+.crt-overlay {
+  pointer-events: none;
+  position: relative;
+}
+
+.crt-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════
+   DESKTOP GRID
+   ═══════════════════════════════════════════ */
+
+.desktop-bg {
+  background-color: var(--cf-desktop);
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR - WIN95 STYLE
+   ═══════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: repeating-conic-gradient(var(--cf-gray) 0% 25%, var(--cf-white) 0% 50%) 50% / 2px 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cf-window-bg);
+  border: 2px solid;
+  border-color: var(--cf-window-border-light) var(--cf-window-border-darker) var(--cf-window-border-darker) var(--cf-window-border-light);
+  box-shadow: inset 1px 1px 0 var(--cf-white), inset -1px -1px 0 var(--cf-inset-light);
+}
+
+::-webkit-scrollbar-button {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: var(--cf-window-bg);
+  border: 2px solid;
+  border-color: var(--cf-window-border-light) var(--cf-window-border-darker) var(--cf-window-border-darker) var(--cf-window-border-light);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE MOBILE RETRO
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  .retro-title-bar {
+    padding: 2px 2px;
+  }
+
+  .retro-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+}
