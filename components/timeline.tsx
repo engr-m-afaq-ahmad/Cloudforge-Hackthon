@@ -24,7 +24,7 @@ export default function Timeline() {
               </span>
 
               {/* Status indicator */}
-              <span className={`shrink-0 w-16 text-center text-[9px] px-1 ${
+              <span className={`shrink-0 w-14 sm:w-16 text-center text-[9px] px-1 ${
                 item.status === "COMPLETE"
                   ? "text-green-400"
                   : item.status === "ACTIVE"

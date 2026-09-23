@@ -11,7 +11,7 @@ export default function Highlights() {
               <div className="font-blanka text-2xl sm:text-3xl md:text-4xl tracking-wider text-[var(--cf-blue)]">
                 {item.value}
               </div>
-              <div className="text-[10px] sm:text-xs font-mono tracking-[0.15em] text-gray-600 uppercase mt-1">
+              <div className="text-[9px] sm:text-xs font-mono tracking-[0.1em] sm:tracking-[0.15em] text-gray-600 uppercase mt-1 break-words">
                 {item.label}
               </div>
             </div>

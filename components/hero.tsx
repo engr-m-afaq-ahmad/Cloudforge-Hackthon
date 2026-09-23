@@ -57,9 +57,9 @@ export default function Hero() {
   }, [bootPhase]);
 
   return (
-    <section id="hero" className="min-h-screen desktop-bg pt-0">
-      <div className="min-h-screen flex items-start justify-center p-4 sm:p-8 pt-20 sm:pt-24">
-        <div className="w-full max-w-4xl">
+    <section id="hero" className="min-h-screen h-auto desktop-bg pt-0">
+      <div className="min-h-[calc(100vh-0px)] h-auto lg:min-h-screen flex items-start justify-center p-4 sm:p-8 pt-20 sm:pt-24">
+        <div className="w-full max-w-4xl min-w-0">
           {/* Boot Screen */}
           {bootPhase === "booting" && (
             <RetroWindow title="CLOUDFORGE BOOT" icon="⚙" showControls={false}>
@@ -112,7 +112,7 @@ export default function Hero() {
                     </span>
                   </h1>
 
-                  <div className="font-mono text-xs sm:text-sm tracking-[0.3em] text-gray-500 mb-2">
+                  <div className="font-mono text-xs sm:text-sm tracking-[0.3em] text-gray-500 mb-2 overflow-hidden whitespace-nowrap">
                     ════════════════════════════════
                   </div>
 
@@ -135,7 +135,7 @@ export default function Hero() {
                   </div>
 
                   {/* Countdown */}
-                  <div className="retro-inset p-4 inline-block bg-white">
+                  <div className="retro-inset p-2 sm:p-4 inline-block max-w-full bg-white">
                     <div className="text-[10px] font-mono text-gray-500 mb-2 tracking-wider">
                       ── SYSTEM CLOCK ──
                     </div>

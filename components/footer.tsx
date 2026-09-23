@@ -28,7 +28,7 @@ export default function Footer() {
           <div className="w-px bg-[var(--cf-inset-light)] mx-1" />
 
           {/* Quick launch */}
-          <div className="flex items-center gap-0.5 px-1">
+          <div className="flex items-center gap-0.5 px-1 overflow-x-auto min-w-0">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
