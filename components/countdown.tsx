@@ -34,9 +34,12 @@ export default function Countdown() {
   }, []);
 
   useEffect(() => {
-    tick();
+    const frame = requestAnimationFrame(tick);
     const interval = setInterval(tick, 1000);
-    return () => clearInterval(interval);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearInterval(interval);
+    };
   }, [tick]);
 
   const units: { key: keyof TimeLeft; label: string }[] = [
@@ -51,10 +54,10 @@ export default function Countdown() {
       <div className="flex items-center gap-3 sm:gap-4">
         {units.map((u) => (
           <div key={u.key} className="flex flex-col items-center">
-            <div className="font-mono text-xl sm:text-2xl md:text-3xl text-[var(--cf-dark)] tabular-nums bg-white px-2 py-1 border border-[var(--cf-inset-light)]">
+            <div className="font-mono text-2xl sm:text-3xl md:text-4xl text-[var(--cf-dark)] tabular-nums bg-white px-3 py-2 border border-[var(--cf-inset-light)]">
               --
             </div>
-            <div className="text-[8px] sm:text-[9px] font-mono tracking-wider text-gray-500 mt-1">
+            <div className="text-xs font-mono tracking-wider text-gray-500 mt-1.5">
               {u.label}
             </div>
           </div>
@@ -64,13 +67,13 @@ export default function Countdown() {
   }
 
   return (
-    <div className="flex items-center gap-1.5 sm:gap-3 max-w-full overflow-x-auto">
+    <div className="flex items-center gap-2 sm:gap-4 max-w-full overflow-x-auto">
       {units.map((u, i) => (
         <div key={u.key} className="flex flex-col items-center">
-          <div className="font-mono text-xl sm:text-2xl md:text-3xl text-[var(--cf-dark)] tabular-nums bg-white px-2 py-1 border border-[var(--cf-inset-light)] leading-none">
+          <div className="font-mono text-2xl sm:text-3xl md:text-4xl text-[var(--cf-dark)] tabular-nums bg-white px-3 py-2 border border-[var(--cf-inset-light)] leading-none">
             {pad(timeLeft[u.key])}
           </div>
-          <div className="text-[8px] sm:text-[9px] font-mono tracking-wider text-gray-500 mt-1">
+          <div className="text-xs font-mono tracking-wider text-gray-500 mt-1.5">
             {u.label}
           </div>
           {i < units.length - 1 && (

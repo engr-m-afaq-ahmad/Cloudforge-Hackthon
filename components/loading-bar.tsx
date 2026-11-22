@@ -24,7 +24,7 @@ export default function LoadingBar({ progress, className = "", showLabel = false
         </div>
       </div>
       {showLabel && (
-        <div className="flex justify-between mt-1 text-[10px] font-mono text-[var(--cf-dark)]">
+        <div className="flex justify-between mt-2 text-sm font-mono text-[var(--cf-dark)]">
           <span>{Math.round(progress)}%</span>
           <span>{blocks}/20 blocks</span>
         </div>

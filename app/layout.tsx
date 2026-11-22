@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CLOUDFORGE | Hackathon Operating System",
+  title: "CLOUDFORGE | AI Hackathon '26 — AWS SBG UET Lahore",
   description:
-    "A developer competition where bold ideas become real-world technology. Hack. Build. Forge.",
+    "CloudForge 2026 is an AI hackathon run by the AWS Student Builder Group (SBG) at UET Lahore. December 09, 2026 at TICKS BIC. Hack. Build. Forge.",
 };
 
 export default function RootLayout({

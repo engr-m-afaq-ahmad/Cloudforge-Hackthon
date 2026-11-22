@@ -9,12 +9,12 @@ import { SITE } from "@/lib/constants";
 
 const BOOT_LINES = [
   "CLOUDFORGE BIOS v2.0",
-  "Copyright (c) 2026 Cloudforge Systems",
+  "AWS Student Builder Group — UET Lahore",
   "",
   "Checking system memory... 640K OK",
   "Initializing display adapter... OK",
   "Loading CLOUDFORGE...",
-  "Loading HACKATHON.DRV...",
+  "Loading AI_HACKATHON_26.DRV...",
   "Starting CLOUDFORGE...",
   "",
   "SYSTEM READY",
@@ -58,12 +58,12 @@ export default function Hero() {
 
   return (
     <section id="hero" className="min-h-screen h-auto desktop-bg pt-0">
-      <div className="min-h-[calc(100vh-0px)] h-auto lg:min-h-screen flex items-start justify-center p-4 sm:p-8 pt-20 sm:pt-24">
-        <div className="w-full max-w-4xl min-w-0">
+      <div className="min-h-[calc(100vh-0px)] h-auto lg:min-h-screen flex items-start justify-center p-4 sm:p-8 pt-24 sm:pt-28">
+        <div className="w-full max-w-5xl min-w-0">
           {/* Boot Screen */}
           {bootPhase === "booting" && (
             <RetroWindow title="CLOUDFORGE BOOT" icon="⚙" showControls={false}>
-              <div className="bg-black text-green-400 font-mono text-xs sm:text-sm p-4 min-h-[200px] crt-overlay">
+              <div className="bg-black text-green-400 font-mono text-sm p-5 min-h-[220px] crt-overlay">
                 {BOOT_LINES.slice(0, visibleLines).map((line, i) => (
                   <div key={i} className={`${i === BOOT_LINES.length - 1 && visibleLines === BOOT_LINES.length ? "text-white font-bold" : ""}`}>
                     {line || "\u00A0"}
@@ -77,12 +77,12 @@ export default function Hero() {
           {/* Loading Phase */}
           {bootPhase === "loading" && (
             <RetroWindow title="LOADING CLOUDFORGE" icon="⏳" showControls={false}>
-              <div className="p-4">
-                <div className="text-[11px] font-mono text-[var(--cf-dark)] mb-3">
+              <div className="p-5">
+                <div className="text-sm font-mono text-[var(--cf-dark)] mb-4">
                   Loading hackathon modules...
                 </div>
                 <LoadingBar progress={bootProgress} />
-                <div className="flex justify-between mt-2 text-[10px] font-mono text-gray-500">
+                <div className="flex justify-between mt-2 text-xs font-mono text-gray-500">
                   <span>{bootProgress}% complete</span>
                   <span>Initializing...</span>
                 </div>
@@ -92,59 +92,63 @@ export default function Hero() {
 
           {/* Ready - Main Hero */}
           {bootPhase === "ready" && (
-            <div className="space-y-4 animate-fade-in">
+            <div className="space-y-6 animate-fade-in">
               {/* Main window */}
               <RetroWindow title={SITE.exe} icon="🖥" className="!border-[var(--cf-blue)]">
-                <div className="text-center py-8 sm:py-12">
+                <div className="text-center py-10 sm:py-14">
                   {/* System status bar */}
-                  <div className="inline-flex items-center gap-2 bg-green-100 border border-green-600 px-3 py-1 mb-8 text-[10px] font-mono text-green-800">
+                  <div className="inline-flex items-center gap-2 bg-green-100 border border-green-600 px-4 py-1.5 mb-10 text-xs font-mono text-green-800">
                     <span className="w-1.5 h-1.5 bg-green-600 rounded-full animate-pulse" />
                     SYSTEM ONLINE — ALL MODULES LOADED
                   </div>
 
                   {/* Title */}
-                  <h1 className="mb-2">
-                    <span className="block font-blanka text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.85] tracking-wider text-[var(--cf-blue)]">
+                  <h1 className="mb-3">
+                    <span className="block font-blanka text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.85] tracking-wider text-[var(--cf-blue)]">
                       CLOUD
                     </span>
-                    <span className="block font-blanka text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.85] tracking-wider text-[var(--cf-dark)]">
+                    <span className="block font-blanka text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.85] tracking-wider text-[var(--cf-dark)]">
                       FORGE
                     </span>
                   </h1>
 
-                  <div className="font-mono text-xs sm:text-sm tracking-[0.3em] text-gray-500 mb-2 overflow-hidden whitespace-nowrap">
+                  <div className="font-mono text-xs sm:text-sm tracking-[0.3em] text-gray-500 mb-3 overflow-hidden whitespace-nowrap">
                     ════════════════════════════════
                   </div>
 
-                  <p className="font-blanka text-lg sm:text-2xl md:text-3xl tracking-[0.2em] text-[var(--cf-dark)] mb-2">
-                    HACKATHON
+                  <p className="font-blanka text-xl sm:text-2xl md:text-3xl tracking-[0.2em] text-[var(--cf-dark)] mb-3">
+                    {SITE.event}
                   </p>
 
-                  <p className="font-mono text-sm sm:text-base text-gray-600 mb-8">
+                  <p className="font-mono text-sm sm:text-base text-gray-600 mb-3">
                     FORGE THE FUTURE.
                   </p>
 
+                  <p className="font-mono text-xs sm:text-sm text-gray-500 tracking-wider mb-10">
+                    {SITE.date} • {SITE.venue} • {SITE.format.toUpperCase()}
+                  </p>
+
                   {/* CTAs */}
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
                     <RetroButton href="#register" primary>
-                      ▶ ENTER CLOUDFORGE
+                      ▶ REGISTER NOW
                     </RetroButton>
-                    <RetroButton href="#tracks">
-                      OPEN TRACKS
+                    <RetroButton href="#timeline">
+                      VIEW AGENDA
                     </RetroButton>
                   </div>
 
                   {/* Countdown */}
-                  <div className="retro-inset p-2 sm:p-4 inline-block max-w-full bg-white">
-                    <div className="text-[10px] font-mono text-gray-500 mb-2 tracking-wider">
+                  <div className="retro-inset p-3 sm:p-5 inline-block max-w-full bg-white">
+                    <div className="text-xs font-mono text-gray-500 mb-3 tracking-wider">
                       ── SYSTEM CLOCK ──
                     </div>
                     <Countdown />
                   </div>
 
                   {/* Registration status */}
-                  <div className="mt-6 text-[10px] font-mono text-gray-500 tracking-wider">
-                    &gt; REGISTRATION STATUS: OPEN
+                  <div className="mt-8 text-xs font-mono text-gray-500 tracking-wider">
+                    &gt; REGISTRATION STATUS: OPEN — TEAM OF 4 (SOLO ALLOWED)
                   </div>
                 </div>
               </RetroWindow>
@@ -152,26 +156,26 @@ export default function Hero() {
               {/* Floating system notification */}
               {showPopup && (
                 <div className="fixed bottom-4 right-4 z-40 hidden sm:block animate-popup">
-                  <div className="retro-window !w-64">
-                    <div className="retro-title-bar !py-0.5">
-                      <span className="text-[9px] font-bold text-white font-mono">⚠ SYSTEM MESSAGE</span>
+                  <div className="retro-window !w-72">
+                    <div className="retro-title-bar !py-1">
+                      <span className="text-xs font-bold text-white font-mono">⚠ SYSTEM MESSAGE</span>
                       <button
-                        className="retro-title-btn !w-3 !h-3"
+                        className="retro-title-btn !w-4 !h-4"
                         aria-label="Close"
                         onClick={() => setShowPopup(false)}
                       >
-                        <span className="text-[8px] font-bold text-black">×</span>
+                        <span className="text-xs font-bold text-black">×</span>
                       </button>
                     </div>
-                    <div className="p-3 bg-[var(--cf-window-bg)]">
-                      <p className="text-[10px] font-mono text-[var(--cf-dark)] mb-2">
+                    <div className="p-4 bg-[var(--cf-window-bg)]">
+                      <p className="text-sm font-mono text-[var(--cf-dark)] mb-3">
                         ARE YOU READY TO BUILD?
                       </p>
-                      <div className="flex gap-2">
-                        <RetroButton primary className="!text-[9px] !px-2" onClick={() => setShowPopup(false)}>
+                      <div className="flex gap-3">
+                        <RetroButton primary className="!text-xs !px-3" onClick={() => setShowPopup(false)}>
                           YES
                         </RetroButton>
-                        <RetroButton className="!text-[9px] !px-2" onClick={() => setShowPopup(false)}>
+                        <RetroButton className="!text-xs !px-3" onClick={() => setShowPopup(false)}>
                           NO
                         </RetroButton>
                       </div>

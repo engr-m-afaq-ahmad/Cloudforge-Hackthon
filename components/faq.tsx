@@ -9,13 +9,13 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-8 sm:py-12 px-4 sm:px-8">
+    <section id="faq" className="max-w-5xl mx-auto py-12 sm:py-20 px-4 sm:px-8">
       <RetroWindow title="HELP" icon="❓">
         {/* Help header */}
-        <div className="retro-inset bg-white p-3 mb-4">
-          <div className="flex items-center gap-2">
+        <div className="retro-inset bg-white p-4 mb-5">
+          <div className="flex items-center gap-2.5">
             <span className="text-sm">❓</span>
-            <span className="font-mono text-[11px] text-[var(--cf-dark)]">
+            <span className="font-mono text-sm text-[var(--cf-dark)]">
               CLOUDFORGE HELP — Click a question to view answer
             </span>
           </div>
@@ -30,30 +30,30 @@ export default function FAQSection() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center gap-2 p-3 text-left hover:bg-[var(--cf-title-bar)]/10 transition-colors"
+                className="w-full flex items-center gap-3 p-4 text-left hover:bg-[var(--cf-title-bar)]/10 transition-colors"
               >
-                <span className="font-mono text-[11px] text-[var(--cf-blue)] shrink-0">
+                <span className="font-mono text-sm text-[var(--cf-blue)] shrink-0">
                   [{openIndex === index ? "−" : "+"}]
                 </span>
-                <span className="font-mono text-[11px] text-[var(--cf-dark)]">
+                <span className="font-mono text-base text-[var(--cf-dark)]">
                   {item.q}
                 </span>
               </button>
 
               {openIndex === index && (
-                <div className="px-6 pb-3 animate-fade-in">
-                  <div className="retro-inset bg-white p-3">
-                    <div className="flex items-start gap-2">
-                      <span className="text-[10px] text-gray-400 shrink-0 mt-0.5">→</span>
-                      <p className="text-[11px] font-mono text-gray-600 leading-relaxed">
+                <div className="px-8 pb-4 animate-fade-in">
+                  <div className="retro-inset bg-white p-4">
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-xs text-gray-400 shrink-0 mt-0.5">→</span>
+                      <p className="text-sm font-mono text-gray-600 leading-relaxed">
                         {item.a}
                       </p>
                     </div>
                   </div>
-                  <div className="flex justify-end mt-2">
+                  <div className="flex justify-end mt-3">
                     <RetroButton
                       onClick={() => setOpenIndex(null)}
-                      className="!text-[9px] !px-2"
+                      className="!text-xs !px-3"
                     >
                       OK
                     </RetroButton>
@@ -65,7 +65,7 @@ export default function FAQSection() {
         </div>
 
         {/* Status bar */}
-        <div className="border-t border-[var(--cf-inset-light)] px-2 py-0.5 mt-2 flex items-center justify-between text-[9px] font-mono text-gray-500">
+        <div className="border-t border-[var(--cf-inset-light)] px-3 py-1.5 mt-3 flex items-center justify-between text-xs font-mono text-gray-500">
           <span>{FAQ.length} topics available</span>
           <span>CLOUDFORGE HELP SYSTEM v1.0</span>
         </div>
